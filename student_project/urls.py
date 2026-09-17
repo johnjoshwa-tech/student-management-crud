@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponseRedirect # <-- Add this
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
+    path('', lambda request: HttpResponseRedirect('/api/students/')), # <-- Add this line to redirect the home page
 ]
